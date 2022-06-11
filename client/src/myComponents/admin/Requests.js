@@ -48,7 +48,7 @@ const requests = [
 
 export const Requests = () => {
   return (
-    <Grid container item xs={12}>
+    <Grid container xs={12}>
       {requests.map((request) => (
         <RequestsTemplate content={request} />
       ))}

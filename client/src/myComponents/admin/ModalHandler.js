@@ -1,6 +1,6 @@
 import { Grid, MenuItem, Typography } from "@material-ui/core";
 import { Rooms } from "./Rooms";
-import Requests, { Requets } from "./Requests";
+import Requests from "./Requests";
 import { Students } from "./Students";
 import { Complaints } from "./Complaints";
 import React, { useState } from "react";

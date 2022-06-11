@@ -95,11 +95,11 @@ const styles = makeStyles(() =>
     },
     bookbtn: {
       backgroundColor: "black",
-      color:"white",
-      "&:hover":{
+      color: "white",
+      "&:hover": {
         color: "black",
-        backgroundColor:"grey",
-      }
+        backgroundColor: "grey",
+      },
     },
     facilities: {
       color: "#369e53",
@@ -129,6 +129,19 @@ const styles = makeStyles(() =>
     },
     roomstemplate: {
       width: "150vh",
+    },
+    container: {
+      display: "flex",
+      height: "100vh",
+      overflow: "scroll",
+      paddingBottom: 110,
+    },
+    icon: {
+      color: "#fff",
+    },
+    logo: {
+      marginRight: 16,
+      marginLeft: 0,
     },
   })
 );

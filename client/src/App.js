@@ -1,4 +1,4 @@
-import "/home/dev/Documents/hostelites/hostelites/client/src/myComponents/css/App.css";
+import "./myComponents/css/App.css";
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Home } from "./myComponents/Home";

@@ -1,6 +1,6 @@
 import { createStyles, makeStyles } from "@material-ui/core/styles";
-import React, { Component } from 'react';
-import { render } from 'react-dom';
+import React, { Component } from "react";
+import { render } from "react-dom";
 const styles = makeStyles(() =>
   createStyles({
     menuItem: {
@@ -60,7 +60,22 @@ const styles = makeStyles(() =>
     content: {
       width: "100%",
     },
+    container: {
+      display: "flex",
+      height: "100vh",
+      overflow: "scroll",
+      paddingBottom: 110,
+    },
+    icon: {
+      color: "#fff",
+    },
+    logo: {
+      marginRight: 16,
+      marginLeft: 0,
+    },
+    rightSideDrawer: {
+      backgroundColor: "#dedcd7",
+    },
   })
-  
 );
 export default styles;

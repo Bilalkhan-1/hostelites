@@ -7,10 +7,9 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import BedroomChildIcon from "@mui/icons-material/BedroomChild";
+import ReceiptIcon from "@mui/icons-material/Receipt";
 import FeedbackIcon from "@mui/icons-material/Feedback";
-import PersonIcon from "@mui/icons-material/Person";
-import MailIcon from "@mui/icons-material/Mail";
+import SingleBedIcon from "@mui/icons-material/SingleBed";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { useNavigate } from "react-router-dom";
 import { Navbar } from "react-bootstrap";
@@ -46,41 +45,30 @@ export default function TemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {/* {["Rooms", "Requests", "Students", "Complaints"].map( */}
-        {/* (text, index) => ( */}
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <BedroomChildIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Rooms"} />
-          </ListItemButton>
-        </ListItem>
-
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <MailIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Requests"} />
-          </ListItemButton>
-        </ListItem>
-
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <PersonIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Students"} />
-          </ListItemButton>
-        </ListItem>
-
         <ListItem disablePadding>
           <ListItemButton>
             <ListItemIcon>
               <FeedbackIcon />
             </ListItemIcon>
-            <ListItemText primary={"Complaints"} />
+            <ListItemText primary={"Complaint Form"} />
+          </ListItemButton>
+        </ListItem>
+
+        <ListItem disablePadding>
+          <ListItemButton>
+            <ListItemIcon>
+              <ReceiptIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Invoice"} />
+          </ListItemButton>
+        </ListItem>
+
+        <ListItem disablePadding>
+          <ListItemButton>
+            <ListItemIcon>
+              <SingleBedIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Book Room"} />
           </ListItemButton>
         </ListItem>
       </List>
@@ -88,7 +76,7 @@ export default function TemporaryDrawer() {
   );
 
   return (
-    <div>
+    <div className={classes.rightSideDrawer}>
       {["left"].map((anchor) => (
         <React.Fragment key={anchor}>
           <Navbar bg="dark" variant="dark">
@@ -104,7 +92,7 @@ export default function TemporaryDrawer() {
               >
                 <img
                   alt=""
-                  src={require("./resources/sign.png")}
+                  src={require("../resources/sign.png")}
                   width="30"
                   height="30"
                   className={classNames(

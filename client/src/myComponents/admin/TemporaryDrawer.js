@@ -46,8 +46,6 @@ export default function TemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {/* {["Rooms", "Requests", "Students", "Complaints"].map( */}
-        {/* (text, index) => ( */}
         <ListItem disablePadding>
           <ListItemButton>
             <ListItemIcon>
@@ -104,7 +102,7 @@ export default function TemporaryDrawer() {
               >
                 <img
                   alt=""
-                  src={require("./resources/sign.png")}
+                  src={require("../resources/sign.png")}
                   width="30"
                   height="30"
                   className={classNames(
