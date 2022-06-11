@@ -5,6 +5,10 @@ import TemporaryDrawer from "./TemporaryDrawer";
 
 import { RoomTemplate } from "./RoomTemplate";
 import useStyles from "./styles";
+import { useState } from "react";
+import { useEffect } from "react";
+import { useNavigate } from "react-router";
+import axios from "axios";
 const rooms = [
   { title: "Luxury Room", price: "12,000", avalability: "Available" },
   { title: "Economic", price: "18,000", avalability: "Unavailable" },
@@ -15,11 +19,30 @@ const rooms = [
 ];
 
 export const Rooms = () => {
+  const [roomData, setRoomData] = useState([]);
+  useEffect(() => {
+    axios({
+      url: "http://localhost:5000/getRooms",
+      method: "GET",
+    })
+      .then((response) => {
+        console.log("Data has been retreived the server");
+        const arr = Array.from(response.data);
+        setRoomData(arr);
+        console.log("Rooms are: ", roomData);
+      })
+      .catch(() => {
+        console.log("Internal server error");
+      });
+  }, []);
+
+  const navigate = useNavigate();
   const classes = useStyles();
   return (
     <>
       <TemporaryDrawer />
       <Grid container item xs={12} className={classes.container}>
+        {console.log("asnlasd", roomData)}
         <Grid container xs={12}>
           {rooms.map((room) => (
             <RoomTemplate

@@ -16,6 +16,7 @@ import { Complaints } from "./myComponents/admin/Complaints";
 import { UserComplaints } from "./myComponents/user/userComplaints";
 import { Invoice } from "./myComponents/user/Invoice";
 import { BookPage } from "./myComponents/user/BookPage";
+import AddRoom from "./myComponents/admin/AddRoom";
 function App() {
   return (
     <Router>
@@ -36,6 +37,7 @@ function App() {
         <Route path="/userComplaints" element={<UserComplaints />} />
         <Route path="/invoice" element={<Invoice />} />
         <Route path="/bookPage" element={<BookPage />} />
+        <Route path="/addRoom" element={<AddRoom />} />
       </Routes>
     </Router>
     // <BookingForm/>

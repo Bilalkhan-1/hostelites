@@ -2,6 +2,9 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const user = require("./schema/userSchema.js");
+const complain = require("./schema/complainSchema.js");
+const request = require("./schema/requestSchema.js");
+const room = require("./schema/roomSchema.js");
 
 const app = express();
 
@@ -53,8 +56,104 @@ app.get("/getUsers", async (req, res) => {
   }
 });
 
+app.get("/getRooms", async (req, res) => {
+  try {
+    room.find({}, (err, data) => {
+      if (err) {
+        res({ error: "Could not connect to database." });
+      } else {
+        console.log("rooms", data);
+        res.send(data);
+      }
+    });
+  } catch (e) {
+    res.status(500).send({ error: "An error occurred" });
+  }
+});
+
+app.post("/addRoom", async (req, res) => {
+  console.log("here");
+  var obj = new room({
+    name: req.body.name,
+    price: req.body.price,
+    noOfBeds: req.body.noOfBeds,
+    wifi: req.body.wifi,
+    parking: req.body.parking,
+    availability: req.body.availability,
+  });
+  console.log(obj);
+  try {
+    await obj.save();
+    res.send(obj);
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
+app.post("/addComplain", async (req, res) => {
+  var obj = new complain({
+    name: req.body.name,
+    email: req.body.email,
+    complainTitle: req.body.complainTitle,
+    complainText: req.body.complainText,
+    resolved: req.body.resolved,
+  });
+  console.log(obj);
+  try {
+    await obj.save();
+    res.send(obj);
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
+app.get("/getComplains", async (req, res) => {
+  try {
+    complain.find({}, (err, data) => {
+      if (err) {
+        res({ error: "Could not connect to database." });
+      } else {
+        res.send(data);
+      }
+    });
+  } catch (e) {
+    res.status(500).send({ error: "An error occurred" });
+  }
+});
+
+app.get("/getRequest", async (req, res) => {
+  try {
+    request.find({}, (err, data) => {
+      if (err) {
+        res({ error: "Could not connect to database." });
+      } else {
+        res.send(data);
+      }
+    });
+  } catch (e) {
+    res.status(500).send({ error: "An error occurred" });
+  }
+});
+
+app.post("/addRequest", async (req, res) => {
+  var obj = new request({
+    name: req.body.name,
+    roomNo: req.body.roomNo,
+    bedNo: req.body.bedNo,
+    institute: req.body.institute,
+    phone: req.body.phone,
+  });
+  console.log(obj);
+  try {
+    await obj.save();
+    res.send(obj);
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
 const CONNECTION_URL =
-  "mongodb+srv://bilalkhan:bilal123@cluster0.bcloh.mongodb.net/?retryWrites=true&w=majority";
+  "mongodb+srv://bilalkhan:bilal123@cluster0.n6u0ovz.mongodb.net/?retryWrites=true&w=majority";
 
 const PORT = process.env.PORT || 5000;
 

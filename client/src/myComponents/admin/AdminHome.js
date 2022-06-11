@@ -14,7 +14,7 @@ export const AdminHome = () => {
   return (
     <>
       {/* <Header /> */}
-      <TemporaryDrawer />
+      {/* <TemporaryDrawer /> */}
       <Grid container item xs={12} className={classes.container}>
         {/* <ModalHandler /> */}
         <Rooms />
@@ -22,7 +22,7 @@ export const AdminHome = () => {
         {/* <Students /> */}
         {/* <Complaints /> */}
       </Grid>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

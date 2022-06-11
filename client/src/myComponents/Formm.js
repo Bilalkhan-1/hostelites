@@ -50,7 +50,9 @@ function Formm() {
   };
   const navigate = useNavigate();
   const validate = Yup.object({
-    email: Yup.string().email("email is invalid").required("required"),
+    email: Yup.string()
+      .email("email is invalid")
+      .required("required"),
     password: Yup.string()
       .min(6, "Password must be atleast 6 characters")
       .required("password is required"),
