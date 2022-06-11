@@ -1,5 +1,8 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
+import { Footer } from "../Footer";
+import TemporaryDrawer from "./TemporaryDrawer";
+import useStyles from "./styles";
 
 import { StudentTemplate } from "./StudentTemplate";
 const students = [
@@ -45,12 +48,19 @@ const students = [
   },
 ];
 export const Students = () => {
+  const classes = useStyles();
   return (
-    <Grid container item xs={12}>
-      {students.map((student) => (
-        <StudentTemplate content={student} />
-      ))}
-    </Grid>
+    <>
+      <TemporaryDrawer />
+      <Grid container item xs={12} className={classes.container}>
+        <Grid container item xs={12}>
+          {students.map((student) => (
+            <StudentTemplate content={student} />
+          ))}
+        </Grid>
+      </Grid>
+      <Footer />
+    </>
   );
 };
 export default Students;

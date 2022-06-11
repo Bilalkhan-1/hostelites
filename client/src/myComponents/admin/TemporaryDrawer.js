@@ -38,6 +38,19 @@ export default function TemporaryDrawer() {
     setState({ ...state, [anchor]: open });
   };
 
+  function openRooms() {
+    navigate("/rooms");
+  }
+  function openRequests() {
+    navigate("/requests");
+  }
+  function opensStudents() {
+    navigate("/students");
+  }
+  function openComplaints() {
+    navigate("/complaints");
+  }
+
   const list = (anchor) => (
     <Box
       sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
@@ -47,7 +60,7 @@ export default function TemporaryDrawer() {
     >
       <List>
         <ListItem disablePadding>
-          <ListItemButton>
+          <ListItemButton onClick={openRooms}>
             <ListItemIcon>
               <BedroomChildIcon />
             </ListItemIcon>
@@ -56,7 +69,7 @@ export default function TemporaryDrawer() {
         </ListItem>
 
         <ListItem disablePadding>
-          <ListItemButton>
+          <ListItemButton onClick={openRequests}>
             <ListItemIcon>
               <MailIcon />
             </ListItemIcon>
@@ -65,7 +78,7 @@ export default function TemporaryDrawer() {
         </ListItem>
 
         <ListItem disablePadding>
-          <ListItemButton>
+          <ListItemButton onClick={opensStudents}>
             <ListItemIcon>
               <PersonIcon />
             </ListItemIcon>
@@ -74,7 +87,7 @@ export default function TemporaryDrawer() {
         </ListItem>
 
         <ListItem disablePadding>
-          <ListItemButton>
+          <ListItemButton onClick={openComplaints}>
             <ListItemIcon>
               <FeedbackIcon />
             </ListItemIcon>

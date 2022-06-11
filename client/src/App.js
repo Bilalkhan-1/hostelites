@@ -9,6 +9,10 @@ import { UserHome } from "./myComponents/user/UserHome";
 import { Book } from "./myComponents/user/Book";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import TemporaryDrawer from "./myComponents/TemporaryDrawer";
+import { Rooms } from "./myComponents/admin/Rooms";
+import { Requests } from "./myComponents/admin/Requests";
+import { Students } from "./myComponents/admin/Students";
+import { Complaints } from "./myComponents/admin/Complaints";
 function App() {
   return (
     <Router>
@@ -20,6 +24,11 @@ function App() {
         <Route path="/adminHome" element={<AdminHome />} />
         <Route path="/userHome" element={<UserHome />} />
         <Route path="/bookform" element={<Book />} />
+
+        <Route path="/rooms" element={<Rooms />} />
+        <Route path="/requests" element={<Requests />} />
+        <Route path="/students" element={<Students />} />
+        <Route path="/complaints" element={<Complaints />} />
       </Routes>
     </Router>
     // <BookingForm/>

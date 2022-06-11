@@ -1,5 +1,7 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
+import { Footer } from "../Footer";
+import TemporaryDrawer from "./TemporaryDrawer";
 
 import { RoomTemplate } from "./RoomTemplate";
 import useStyles from "./styles";
@@ -15,15 +17,21 @@ const rooms = [
 export const Rooms = () => {
   const classes = useStyles();
   return (
-    <Grid container xs={12}>
-      {rooms.map((room) => (
-        <RoomTemplate
-          title={room.title}
-          price={room.price}
-          avalability={room.avalability}
-        />
-      ))}
-    </Grid>
+    <>
+      <TemporaryDrawer />
+      <Grid container item xs={12} className={classes.container}>
+        <Grid container xs={12}>
+          {rooms.map((room) => (
+            <RoomTemplate
+              title={room.title}
+              price={room.price}
+              avalability={room.avalability}
+            />
+          ))}
+        </Grid>
+      </Grid>
+      <Footer />
+    </>
   );
 };
 export default Rooms;

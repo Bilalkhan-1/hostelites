@@ -1,5 +1,8 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
+import { Footer } from "../Footer";
+import TemporaryDrawer from "./TemporaryDrawer";
+import useStyles from "./styles";
 
 import { RequestsTemplate } from "./RequestsTemplate";
 
@@ -47,12 +50,19 @@ const requests = [
 ];
 
 export const Requests = () => {
+  const classes = useStyles();
   return (
-    <Grid container xs={12}>
-      {requests.map((request) => (
-        <RequestsTemplate content={request} />
-      ))}
-    </Grid>
+    <>
+      <TemporaryDrawer />
+      <Grid container item xs={12} className={classes.container}>
+        <Grid container xs={12}>
+          {requests.map((request) => (
+            <RequestsTemplate content={request} />
+          ))}
+        </Grid>
+      </Grid>
+      <Footer />
+    </>
   );
 };
 export default Requests;
