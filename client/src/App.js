@@ -13,6 +13,9 @@ import { Rooms } from "./myComponents/admin/Rooms";
 import { Requests } from "./myComponents/admin/Requests";
 import { Students } from "./myComponents/admin/Students";
 import { Complaints } from "./myComponents/admin/Complaints";
+import { UserComplaints } from "./myComponents/user/userComplaints";
+import { Invoice } from "./myComponents/user/Invoice";
+import { BookPage } from "./myComponents/user/BookPage";
 function App() {
   return (
     <Router>
@@ -29,6 +32,10 @@ function App() {
         <Route path="/requests" element={<Requests />} />
         <Route path="/students" element={<Students />} />
         <Route path="/complaints" element={<Complaints />} />
+
+        <Route path="/userComplaints" element={<UserComplaints />} />
+        <Route path="/invoice" element={<Invoice />} />
+        <Route path="/bookPage" element={<BookPage />} />
       </Routes>
     </Router>
     // <BookingForm/>

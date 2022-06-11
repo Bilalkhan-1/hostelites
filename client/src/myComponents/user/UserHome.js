@@ -1,13 +1,13 @@
 import React from "react";
 import { Header } from "../Header";
-import { Footer } from "../Footer";
 import { UserModelHandler } from "./UserModelHandler";
 import { UserHeader } from "./UserHeader";
-import { Complaints } from "./Complaints";
+import { Complaints } from "./userComplaints";
 import { Invoice } from "./Invoice";
 import { Book } from "./Book";
 import { BookPage } from "./BookPage";
 import { Grid } from "@material-ui/core";
+import { Footer } from "../Footer";
 import TemporaryDrawer from "./TemporaryDrawer";
 import useStyles from "./styles";
 

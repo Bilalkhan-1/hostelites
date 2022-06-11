@@ -14,8 +14,12 @@ import {
 } from "@material-ui/core";
 import ReceiptIcon from "@mui/icons-material/Receipt";
 import { useNavigate } from "react-router-dom";
+import { Footer } from "../Footer";
+import TemporaryDrawer from "./TemporaryDrawer";
+import useStyles from "./styles";
 
 export const Invoice = () => {
+  const classes = useStyles();
   const navigate = useNavigate();
 
   const [userName, email, complaint] = useState("");
@@ -44,38 +48,50 @@ export const Invoice = () => {
   };
 
   return (
-    <Paper elevation={10} style={paperstyle} className="my-5">
-      <Grid align="center">
-        <Avatar style={avatarStyle}>
-          <ReceiptIcon />
-        </Avatar>
-        <h4 className="my-2">Inovice</h4>
-      </Grid>
-      <div>
-        <table class="print-receipt">
-          <tr>
-            <th>Room No.</th>
-            <th>Name</th>
-            <th>Bill</th>
-          </tr>
-          <tr>
-            <td>G-12 </td>
-            <td>Hostelite User </td>
-            <td>10,000 Rupees</td>
-          </tr>
-        </table>
-      </div>
-      <Button
-        id="print"
-        type="submit"
-        fullWidth
-        variant="contained"
-        className="hide-on-print my-5"
-        style={submitBtn}
-        onClick={Submit}
+    <>
+      <TemporaryDrawer />
+      <Grid
+        container
+        justifyContent="center"
+        item
+        xs={12}
+        className={classes.container}
       >
-        Print Invoice
-      </Button>
-    </Paper>
+        <Paper elevation={10} style={paperstyle} className="my-5">
+          <Grid align="center">
+            <Avatar style={avatarStyle}>
+              <ReceiptIcon />
+            </Avatar>
+            <h4 className="my-2">Inovice</h4>
+          </Grid>
+          <div>
+            <table class="print-receipt">
+              <tr>
+                <th>Room No.</th>
+                <th>Name</th>
+                <th>Bill</th>
+              </tr>
+              <tr>
+                <td>G-12 </td>
+                <td>Hostelite User </td>
+                <td>10,000 Rupees</td>
+              </tr>
+            </table>
+          </div>
+          <Button
+            id="print"
+            type="submit"
+            fullWidth
+            variant="contained"
+            className="hide-on-print my-5"
+            style={submitBtn}
+            onClick={Submit}
+          >
+            Print Invoice
+          </Button>
+        </Paper>
+      </Grid>
+      <Footer />
+    </>
   );
 };

@@ -37,6 +37,16 @@ export default function TemporaryDrawer() {
     setState({ ...state, [anchor]: open });
   };
 
+  function openComplaints() {
+    navigate("/userComplaints");
+  }
+  function openInvoice() {
+    navigate("/invoice");
+  }
+  function openBookPage() {
+    navigate("/bookPage");
+  }
+
   const list = (anchor) => (
     <Box
       sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
@@ -46,7 +56,7 @@ export default function TemporaryDrawer() {
     >
       <List>
         <ListItem disablePadding>
-          <ListItemButton>
+          <ListItemButton onClick={openComplaints}>
             <ListItemIcon>
               <FeedbackIcon />
             </ListItemIcon>
@@ -55,7 +65,7 @@ export default function TemporaryDrawer() {
         </ListItem>
 
         <ListItem disablePadding>
-          <ListItemButton>
+          <ListItemButton onClick={openInvoice}>
             <ListItemIcon>
               <ReceiptIcon />
             </ListItemIcon>
@@ -64,7 +74,7 @@ export default function TemporaryDrawer() {
         </ListItem>
 
         <ListItem disablePadding>
-          <ListItemButton>
+          <ListItemButton onClick={openBookPage}>
             <ListItemIcon>
               <SingleBedIcon />
             </ListItemIcon>

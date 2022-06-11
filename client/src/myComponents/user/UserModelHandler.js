@@ -1,10 +1,9 @@
 import { Grid, MenuItem, Typography } from "@material-ui/core";
 import { Formm } from "../Formm";
 import { Signupform } from "../Signupform";
-import {Complaints} from "./Complaints"
-import {Invoice} from "./Invoice";
-import {Book} from "./Book"
-import {BookPage} from "./BookPage";
+import { UserComplaints } from "./userComplaints";
+import { Invoice } from "./Invoice";
+import { BookPage } from "./BookPage";
 import React, { useState } from "react";
 
 import useStyles from "./styles";
@@ -16,10 +15,9 @@ export const UserModelHandler = () => {
   const [currentTab, setCurrentTab] = useState(0);
 
   const tab = {
-    0: <Complaints />,
+    0: <UserComplaints />,
     1: <Invoice />,
-    2: <BookPage />
-    
+    2: <BookPage />,
   };
 
   const menuItems = () => {
