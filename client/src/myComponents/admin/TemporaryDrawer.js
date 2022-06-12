@@ -94,6 +94,19 @@ export default function TemporaryDrawer() {
             <ListItemText primary={"Complaints"} />
           </ListItemButton>
         </ListItem>
+
+        <ListItem disablePadding>
+          <ListItemButton
+            onClick={() => {
+              navigate("/addRoom");
+            }}
+          >
+            <ListItemIcon>
+              <FeedbackIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Add Room"} />
+          </ListItemButton>
+        </ListItem>
       </List>
     </Box>
   );

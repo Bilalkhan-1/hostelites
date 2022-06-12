@@ -13,7 +13,7 @@ import { Rooms } from "./myComponents/admin/Rooms";
 import { Requests } from "./myComponents/admin/Requests";
 import { Students } from "./myComponents/admin/Students";
 import { Complaints } from "./myComponents/admin/Complaints";
-import { UserComplaints } from "./myComponents/user/userComplaints";
+import UserComplaints from "./myComponents/user/userComplaints";
 import { Invoice } from "./myComponents/user/Invoice";
 import { BookPage } from "./myComponents/user/BookPage";
 import AddRoom from "./myComponents/admin/AddRoom";

@@ -1,7 +1,7 @@
 import { Grid, MenuItem, Typography } from "@material-ui/core";
 import { Formm } from "../Formm";
 import { Signupform } from "../Signupform";
-import { UserComplaints } from "./userComplaints";
+import UserComplaints from "./userComplaints";
 import { Invoice } from "./Invoice";
 import { BookPage } from "./BookPage";
 import React, { useState } from "react";

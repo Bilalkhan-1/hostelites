@@ -1,113 +1,122 @@
-import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "../css/styles.css";
+import React from "react";
+import "bootstrap/dist/css/bootstrap.css";
+import { Formik, Form, validateYupSchema } from "formik";
+import * as Yup from "yup";
+import { useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
+import { TextFieldCom } from "../TextFieldCom";
+import axios from "axios";
+import Checkbox from "@mui/material/Checkbox";
+import { FormGroup } from "react-bootstrap";
+import { FormControlLabel } from "@mui/material";
+
 import {
-  Grid,
   Paper,
   Avatar,
-  TextField,
+  Grid,
   Button,
-  FormGroup,
-  FormControlLabel,
   Typography,
   Link,
 } from "@material-ui/core";
-import ForumIcon from "@mui/icons-material/Forum";
-import Checkbox from "@mui/material/Checkbox";
-import { useNavigate } from "react-router-dom";
-import { SliderMarkLabel } from "@mui/material";
-import { Footer } from "../Footer";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import TemporaryDrawer from "./TemporaryDrawer";
-import useStyles from "./styles";
+const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
-export const UserComplaints = () => {
-  const classes = useStyles();
-  const navigate = useNavigate();
+function UserComplaints() {
+  const [resolved, setResolved] = useState(false);
 
-  const [userName, email, complaint] = useState("");
-
-  const Submit = () => {
-    navigate("/userHome");
-  };
-
-  const linkstyle = {
-    textDecoration: "none",
-    cursor: "pointer",
-  };
-
-  const submitBtn = {
+  const signupBtnStyle = {
     backgroundColor: "black",
     color: "white",
   };
   const paperstyle = {
     padding: 20,
-    height: "70vh",
-    width: "70vh auto",
-    margin: "20px",
+    height: "100%",
+    width: 600,
+    margin: "20px auto",
   };
   const avatarStyle = {
     backgroundColor: "black",
   };
+  const linkstyle = {};
+  const navigate = useNavigate();
+
+  function signinPage() {
+    navigate("/signin");
+  }
+
   return (
     <>
       <TemporaryDrawer />
-      <Grid
-        container
-        justifyContent="center"
-        item
-        xs={12}
-        className={classes.container}
-      >
-        <Grid>
-          <Paper elevation={10} style={paperstyle} className="my-5">
-            <Grid align="center">
-              <Avatar style={avatarStyle}>
-                <ForumIcon />
-              </Avatar>
-              <h4 className="my-2">Complaint Form</h4>
-            </Grid>
-            <TextField
-              id="userName"
-              label="Full Name"
-              variant="outlined"
-              className="my-2"
-              fullWidth
-              required
-              //value={userName}
-            />
-            <TextField
-              id="Email"
-              label="Email"
-              variant="outlined"
-              className="my-2"
-              fullWidth
-              required
-              //value={email}
-            />
-            <TextField
-              id="complaint"
-              label="Complaint"
-              variant="outlined"
-              className="my-2"
-              fullWidth
-              required
-              //value={complaint}
-            />
-            <Button
-              id="Submit"
-              type="submit"
-              fullWidth
-              variant="contained"
-              className="my-3"
-              style={submitBtn}
-              onClick={Submit}
-            >
-              Submit
-            </Button>
-          </Paper>
-        </Grid>
+      <Grid justifyContent="center">
+        <Formik
+          initialValues={{
+            complainTitle: "",
+            complainText: "",
+          }}
+          onSubmit={(values) => {
+            var obj = {
+              name: "Bilal",
+              email: "bilal@gmail.com",
+              complainTitle: values.complainTitle,
+              complainText: values.complainText,
+              resolved: resolved,
+            };
+            axios({
+              url: "http://localhost:5000/addComplain",
+              method: "POST",
+              data: obj,
+            })
+              .then((response) => {
+                console.log("Data has been sent to the server");
+                alert(`Complain registered successfully`);
+              })
+              .catch(() => {
+                console.log("Unable to save Room");
+              });
+          }}
+        >
+          {(formik) => (
+            <Paper style={paperstyle}>
+              <div className="container">
+                <Grid align="center">
+                  <h4 className="my-2">Complain Form</h4>
+                </Grid>
+
+                <Form>
+                  <div className="mb-3">
+                    <TextFieldCom
+                      label="Complain Title"
+                      name="complainTitle"
+                      type="text"
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <TextFieldCom
+                      label="Complain"
+                      name="complainText"
+                      type="text"
+                      style={{ height: "300px" }}
+                    />
+                  </div>
+
+                  <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    style={signupBtnStyle}
+                    className="my-3"
+                  >
+                    Register
+                  </Button>
+                </Form>
+              </div>
+            </Paper>
+          )}
+        </Formik>
       </Grid>
-      <Footer />
     </>
   );
-};
+}
+
+export default UserComplaints;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Grid,
   List,
@@ -7,6 +7,7 @@ import {
   ListItemText,
   Typography,
   Paper,
+  Button,
 } from "@material-ui/core";
 import FastfoodIcon from "@material-ui/icons/Fastfood";
 import WifiIcon from "@material-ui/icons/Wifi";
@@ -15,7 +16,16 @@ import HotelIcon from "@material-ui/icons/Hotel";
 
 import useStyles from "./styles";
 
-export const RoomTemplate = ({ title, price, avalability }) => {
+export const RoomTemplate = ({
+  name,
+  price,
+  avalability,
+  noOfBeds,
+  parking,
+  wifi,
+  id,
+}) => {
+  const [avail, setAvail] = useState(avalability ? "available" : "unavailable");
   const classes = useStyles();
 
   return (
@@ -32,7 +42,7 @@ export const RoomTemplate = ({ title, price, avalability }) => {
             justifyContent="space-between"
             className={classes.titleGrid}
           >
-            <Typography variant="h3"> {title}</Typography>
+            <Typography variant="h3"> {name}</Typography>
             <Typography variant="h4"> {price} PKR </Typography>
           </Grid>
           <Grid item container xs={12} justifyContent="space-between">
@@ -44,7 +54,7 @@ export const RoomTemplate = ({ title, price, avalability }) => {
                   </ListItemIcon>
                   <ListItemText
                     className={classes.facilities}
-                    primary="2 Single Beds"
+                    primary={`${noOfBeds} Single Beds`}
                   />
                 </ListItem>
                 <ListItem disablePadding>
@@ -88,9 +98,13 @@ export const RoomTemplate = ({ title, price, avalability }) => {
               alignItems="flex-end"
               className={classes.avalabilityGrid}
             >
-              <Typography variant="h6" className={classes.avalability}>
-                {avalability}
-              </Typography>
+              <button
+                className="btn btn-primary"
+                id={id}
+                onClick={(e) => console.log(!avail)}
+              >
+                {avail}
+              </button>
             </Grid>
           </Grid>
         </Grid>

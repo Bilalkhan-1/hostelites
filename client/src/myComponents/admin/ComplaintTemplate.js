@@ -4,7 +4,12 @@ import { Grid, Button, Typography, Paper } from "@material-ui/core";
 import "bootstrap/dist/css/bootstrap.min.css";
 import useStyles from "./styles";
 
-export const ComplaintTemplate = () => {
+export const ComplaintTemplate = ({
+  name,
+  email,
+  complainTitle,
+  complainText,
+}) => {
   const classes = useStyles();
 
   return (
@@ -19,13 +24,9 @@ export const ComplaintTemplate = () => {
             />
             <Grid item container xs={10} direction="column">
               <Typography variant="body1" className={classes.nameStyle}>
-                {" "}
-                MaheenMobeen{" "}
+                {name}
               </Typography>
-              <Typography variant="caption">
-                {" "}
-                maheenmobeen@gmail.com{" "}
-              </Typography>
+              <Typography variant="caption">{email}</Typography>
             </Grid>
           </Grid>
           <Grid
@@ -36,19 +37,14 @@ export const ComplaintTemplate = () => {
             className={classes.titleGrid}
           >
             <Typography variant="h5" className={classes.nameStyle}>
-              {" "}
-              Complaint Title
+              {complainTitle}
             </Typography>
           </Grid>
           <Grid item container justifyContent="center" xs={12}>
             <Grid xs={8}>
               {" "}
               <Typography variant="body2" className={classes.titleGrid}>
-                {" "}
-                Complaint Text Complaint Text Complaint Text Complaint Text
-                Complaint Text Complaint Text Complaint Text Complaint Text
-                Complaint Text Complaint Text Complaint Text Complaint Text
-                Complaint Text{" "}
+                {complainText}
               </Typography>
             </Grid>
             <Grid

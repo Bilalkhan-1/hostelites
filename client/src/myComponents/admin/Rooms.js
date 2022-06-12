@@ -44,11 +44,15 @@ export const Rooms = () => {
       <Grid container item xs={12} className={classes.container}>
         {console.log("asnlasd", roomData)}
         <Grid container xs={12}>
-          {rooms.map((room) => (
+          {roomData.map((room) => (
             <RoomTemplate
-              title={room.title}
+              name={room.name}
               price={room.price}
-              avalability={room.avalability}
+              avalability={room.availability}
+              noOfBeds={room.noOfBeds}
+              parking={room.parking}
+              wifi={room.wifi}
+              id={room._id}
             />
           ))}
         </Grid>
