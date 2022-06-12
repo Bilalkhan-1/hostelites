@@ -5,7 +5,6 @@ const user = require("./schema/userSchema.js");
 const complain = require("./schema/complainSchema.js");
 const request = require("./schema/requestSchema.js");
 const room = require("./schema/roomSchema.js");
-
 const app = express();
 
 app.use(bodyParser.json());
@@ -62,7 +61,6 @@ app.get("/getRooms", async (req, res) => {
       if (err) {
         res({ error: "Could not connect to database." });
       } else {
-        console.log("rooms", data);
         res.send(data);
       }
     });
@@ -118,6 +116,33 @@ app.get("/getComplains", async (req, res) => {
     });
   } catch (e) {
     res.status(500).send({ error: "An error occurred" });
+  }
+});
+
+app.delete("/deleteComplain", async (req, res) => {
+  try {
+    const result = await complain.deleteOne({ _id: req.body.id });
+    console.log(result);
+    if (result.deletedCount >= 1) {
+      res.send("deleted successfully....");
+    } else {
+      res.send("unable to delete");
+    }
+  } catch (e) {
+    res.send(e.message);
+  }
+});
+app.delete("/deleteRoom", async (req, res) => {
+  try {
+    const result = await room.deleteOne({ _id: req.body.id });
+    console.log(result);
+    if (result.deletedCount >= 1) {
+      res.send("deleted successfully....");
+    } else {
+      res.send("unable to delete");
+    }
+  } catch (e) {
+    res.send(e.message);
   }
 });
 

@@ -82,6 +82,25 @@ export const UserHome = () => {
             </CardContent>
           </CardActionArea>
         </Card>
+        <Card sx={{ maxWidth: 300 }} className={classes.cardContainer}>
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              height="250"
+              width="250"
+              image={require("./userComplaints.jpeg")}
+              alt="green iguana"
+              onClick={() => {
+                navigate("/activeComplaints");
+              }}
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                Active Complaints
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
       </Grid>
       <Footer />
     </>

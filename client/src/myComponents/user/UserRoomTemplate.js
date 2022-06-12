@@ -13,13 +13,20 @@ import FastfoodIcon from "@material-ui/icons/Fastfood";
 import WifiIcon from "@material-ui/icons/Wifi";
 import DirectionsCarIcon from "@material-ui/icons/DirectionsCar";
 import HotelIcon from "@material-ui/icons/Hotel";
-import {BookingForm} from "./BookingForm";
+import { BookingForm } from "./BookingForm";
 import { useNavigate } from "react-router-dom";
-
 
 import useStyles from "../admin/styles";
 
-export const UserRoomTemplate = ({ title, price, avalability }) => {
+export const UserRoomTemplate = ({
+  name,
+  price,
+  avalability,
+  noOfBeds,
+  parking,
+  wifi,
+  id,
+}) => {
   const classes = useStyles();
   const navigate = useNavigate();
 
@@ -37,7 +44,7 @@ export const UserRoomTemplate = ({ title, price, avalability }) => {
             justifyContent="space-between"
             className={classes.titleGrid}
           >
-            <Typography variant="h3"> {title}</Typography>
+            <Typography variant="h3"> {name}</Typography>
             <Typography variant="h4"> {price} PKR </Typography>
           </Grid>
           <Grid item container xs={12} justifyContent="space-between">
@@ -96,11 +103,14 @@ export const UserRoomTemplate = ({ title, price, avalability }) => {
               {/* <Typography variant="h6" className={classes.avalability}>
                 {avalability}
               </Typography> */}
-              <Button className={classes.bookbtn} onClick={() => {
-                navigate("/bookform");
-              }}>
-                Book Room</Button>
-
+              <Button
+                className={classes.bookbtn}
+                onClick={() => {
+                  navigate("/bookform");
+                }}
+              >
+                Book Room
+              </Button>
             </Grid>
           </Grid>
         </Grid>

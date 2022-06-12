@@ -32,21 +32,20 @@ export const StudentTemplate = ({ content }) => {
             justifyContent="space-between"
             className={classes.titleGrid}
           >
-            <Typography variant="h3"> {content.name}</Typography>
+            <Typography variant="h3">
+              {`${content.firstname} ${content.lastname}`}
+            </Typography>
           </Grid>
           <Grid item container xs={12} justifyContent="space-between">
             <List className={classes.facilities}>
               <ListItem>
-                <ListItemText primary={`Room No. ${content.roomNo}`} />
+                <ListItemText primary={`Email: ${content.email}`} />
               </ListItem>
               <ListItem>
-                <ListItemText primary={`Bed No. ${content.bedNo}`} />
+                <ListItemText primary={"PUCIT"} />
               </ListItem>
               <ListItem>
-                <ListItemText primary={content.institute} />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary={`Phn No. ${content.phone}`} />
+                <ListItemText primary={`Phn No. 0313-4046179`} />
               </ListItem>
             </List>
           </Grid>

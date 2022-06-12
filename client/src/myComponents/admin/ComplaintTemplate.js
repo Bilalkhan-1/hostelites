@@ -3,14 +3,35 @@ import { Grid, Button, Typography, Paper } from "@material-ui/core";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import useStyles from "./styles";
+import axios from "axios";
+import { useNavigate } from "react-router";
 
 export const ComplaintTemplate = ({
   name,
   email,
   complainTitle,
   complainText,
+  id,
 }) => {
+  const navigate = useNavigate();
   const classes = useStyles();
+  function resolveComplain(e) {
+    console.log("button is: ", e.target.id);
+    let obj = {
+      id: e.target.id,
+    };
+    axios
+      .delete("http://localhost:5000/deleteComplain", {
+        data: obj,
+      })
+      .then(function (response) {
+        alert("Resolved successfully");
+        navigate("/adminHome");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
 
   return (
     <Grid container item xs={12} style={{ height: "inherit" }}>
@@ -54,14 +75,13 @@ export const ComplaintTemplate = ({
               alignItems="flex-end"
               xs={4}
             >
-              <Button
-                id="Resolved"
-                type="submit"
-                variant="contained"
-                className={classes.btnStyle}
+              <button
+                id={id}
+                className="btn btn-primary"
+                onClick={resolveComplain}
               >
                 Resolved
-              </Button>
+              </button>
             </Grid>
           </Grid>
         </Grid>

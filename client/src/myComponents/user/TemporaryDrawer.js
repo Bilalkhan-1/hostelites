@@ -15,8 +15,12 @@ import { useNavigate } from "react-router-dom";
 import { Navbar } from "react-bootstrap";
 import classNames from "classnames";
 import useStyles from "./styles";
+import { useContext } from "react";
+import { LoggedUser } from "../../App.js";
 
 export default function TemporaryDrawer() {
+  const { loggedUser, setLoggedUser } = useContext(LoggedUser);
+
   const classes = useStyles();
   const navigate = useNavigate();
   const [state, setState] = React.useState({
@@ -116,6 +120,7 @@ export default function TemporaryDrawer() {
               <Button
                 className={classes.icon}
                 onClick={() => {
+                  setLoggedUser([]);
                   navigate("/");
                 }}
               >

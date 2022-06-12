@@ -15,6 +15,8 @@ import DirectionsCarIcon from "@material-ui/icons/DirectionsCar";
 import HotelIcon from "@material-ui/icons/Hotel";
 
 import useStyles from "./styles";
+import axios from "axios";
+import { useNavigate } from "react-router";
 
 export const RoomTemplate = ({
   name,
@@ -26,7 +28,25 @@ export const RoomTemplate = ({
   id,
 }) => {
   const [avail, setAvail] = useState(avalability ? "available" : "unavailable");
+  const navigate = useNavigate();
   const classes = useStyles();
+  function deleteRoom(e) {
+    console.log("button is: ", e.target.id);
+    let obj = {
+      id: e.target.id,
+    };
+    axios
+      .delete("http://localhost:5000/deleteRoom", {
+        data: obj,
+      })
+      .then(function (response) {
+        alert("Room Deleted successfully");
+        navigate("/adminHome");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
 
   return (
     <Paper elevation={10} className={classes.paperstyle}>
@@ -100,12 +120,8 @@ export const RoomTemplate = ({
               alignItems="flex-end"
               className={classes.avalabilityGrid}
             >
-              <button
-                className="btn btn-primary"
-                id={id}
-                onClick={(e) => setAvail(!avail)}
-              >
-                {avail}
+              <button className="btn btn-danger" id={id} onClick={deleteRoom}>
+                Delete
               </button>
             </Grid>
           </Grid>

@@ -123,7 +123,7 @@ export default function TemporaryDrawer() {
               <Navbar.Brand
                 href="/"
                 onClick={() => {
-                  navigate("/adminHome");
+                  navigate("/adminhome");
                 }}
               >
                 <img

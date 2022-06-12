@@ -38,6 +38,7 @@ export const Complaints = () => {
               email={complain.email}
               complainTitle={complain.complainTitle}
               complainText={complain.complainText}
+              id={complain._id}
             />
           ))}
         </Grid>

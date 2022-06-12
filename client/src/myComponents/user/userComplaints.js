@@ -9,6 +9,8 @@ import axios from "axios";
 import Checkbox from "@mui/material/Checkbox";
 import { FormGroup } from "react-bootstrap";
 import { FormControlLabel } from "@mui/material";
+import { useContext } from "react";
+import { LoggedUser } from "../../App.js";
 
 import {
   Paper,
@@ -23,6 +25,8 @@ import TemporaryDrawer from "./TemporaryDrawer";
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 function UserComplaints() {
+  const { loggedUser, setLoggedUser } = useContext(LoggedUser);
+
   const [resolved, setResolved] = useState(false);
 
   const signupBtnStyle = {
@@ -49,6 +53,7 @@ function UserComplaints() {
     <>
       <TemporaryDrawer />
       <Grid justifyContent="center">
+        {console.log("login user details", loggedUser)}
         <Formik
           initialValues={{
             complainTitle: "",
@@ -56,8 +61,8 @@ function UserComplaints() {
           }}
           onSubmit={(values) => {
             var obj = {
-              name: "Bilal",
-              email: "bilal@gmail.com",
+              name: loggedUser[0].firstname,
+              email: loggedUser[0].email,
               complainTitle: values.complainTitle,
               complainText: values.complainText,
               resolved: resolved,

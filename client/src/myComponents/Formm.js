@@ -7,6 +7,9 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { TextFieldCom } from "./TextFieldCom";
 import axios from "axios";
+import { useContext } from "react";
+import { LoggedUser } from "../App.js";
+import { LoggedAdmin } from "../App.js";
 import {
   Paper,
   Avatar,
@@ -18,6 +21,9 @@ import {
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
 function Formm() {
+  const { loggedUser, setLoggedUser } = useContext(LoggedUser);
+  const { adminLogin, setAdminLogin } = useContext(LoggedAdmin);
+
   const [data, setData] = useState([]);
   useEffect(() => {
     axios({
@@ -50,9 +56,7 @@ function Formm() {
   };
   const navigate = useNavigate();
   const validate = Yup.object({
-    email: Yup.string()
-      .email("email is invalid")
-      .required("required"),
+    email: Yup.string().email("email is invalid").required("required"),
     password: Yup.string()
       .min(6, "Password must be atleast 6 characters")
       .required("password is required"),
@@ -71,6 +75,7 @@ function Formm() {
             values.email === "admin@gmail.com" &&
             values.password === "admin123"
           ) {
+            setAdminLogin((adminLogin) => [values, ...adminLogin]);
             navigate("/adminhome");
           } else {
             let ans = data.find((o) => {
@@ -79,6 +84,8 @@ function Formm() {
 
             if (typeof ans !== "undefined") {
               console.log("login successfully!");
+              setLoggedUser((loggedUser) => [ans, ...loggedUser]);
+              console.log("the info of logged user is: ", loggedUser);
               navigate("/userhome");
             } else {
               alert("invalid username or password");
