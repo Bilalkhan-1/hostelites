@@ -41,8 +41,6 @@ function App() {
   }
   return (
     <LoggedUser.Provider value={{ loggedUser, setLoggedUser }}>
-      {console.log("the varriable", adminLoggedIn)}
-      {console.log("data from app", loggedUser, adminLogin)}
       <LoggedAdmin.Provider value={{ adminLogin, setAdminLogin }}>
         <Router>
           <Routes>

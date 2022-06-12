@@ -29,7 +29,6 @@ export const Complaints = () => {
   return (
     <>
       <TemporaryDrawer />
-      {console.log("kacnlkanclc", complain)}
       <Grid container item xs={12} className={classes.container}>
         <Grid container item xs={12}>
           {complain.map((complain) => (

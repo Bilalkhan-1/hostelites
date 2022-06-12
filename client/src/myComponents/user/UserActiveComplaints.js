@@ -4,7 +4,9 @@ import { Footer } from "../Footer";
 import useStyles from "./styles";
 import { useState } from "react";
 import { useEffect } from "react";
+import { Typography } from "@material-ui/core";
 import { UserComplaintTemplate } from "./UserComplaintTemplate";
+import TemporaryDrawer from "./TemporaryDrawer";
 import axios from "axios";
 import { Header } from "./Header";
 import { useContext } from "react";
@@ -41,11 +43,12 @@ export const Complaints = () => {
   const classes = useStyles();
   return (
     <>
-      <Header />
-      {console.log("kacnlkanclc", loggedUser)}
+      <TemporaryDrawer />
       <Grid container item xs={12} className={classes.container}>
-        <Grid container item xs={12}>
-          {complain.map((comp) => {
+        {console.log("complain", complain)}
+
+        {complain.length !== 0 ? (
+          complain.map((comp) => {
             if (comp.email === loggedUser[0].email) {
               return (
                 <UserComplaintTemplate
@@ -57,8 +60,12 @@ export const Complaints = () => {
                 />
               );
             }
-          })}
-        </Grid>
+          })
+        ) : (
+          <Typography variant="h4" className="text-center my-5">
+            Oh Great! You have no Active Complaints
+          </Typography>
+        )}
       </Grid>
       <Footer />
     </>

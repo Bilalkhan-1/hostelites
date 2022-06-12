@@ -1,6 +1,4 @@
 import { createStyles, makeStyles } from "@material-ui/core/styles";
-import React, { Component } from "react";
-import { render } from "react-dom";
 const styles = makeStyles(() =>
   createStyles({
     menuItem: {
@@ -78,6 +76,30 @@ const styles = makeStyles(() =>
     },
     cardContainer: {
       margin: "150px 10px",
+    },
+    paperstyle: {
+      padding: 20,
+      margin: "20px auto",
+      backgroundColor: "white",
+      borderRadius: 6,
+      marginBottom: 5,
+    },
+    compContainer: {
+      padding: 20,
+      margin: "20px auto",
+      backgroundColor: "white",
+      borderRadius: 6,
+      marginBottom: 5,
+      height: 230,
+    },
+    imageForComplaint: {
+      height: 50,
+      width: 50,
+      margin: "3px 10px",
+      borderRadius: 2,
+    },
+    template: {
+      width: "130vh",
     },
   })
 );

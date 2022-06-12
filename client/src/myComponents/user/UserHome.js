@@ -88,7 +88,7 @@ export const UserHome = () => {
               component="img"
               height="250"
               width="250"
-              image={require("./userComplaints.jpeg")}
+              image={require("./activeComplaint.jpeg")}
               alt="green iguana"
               onClick={() => {
                 navigate("/activeComplaints");

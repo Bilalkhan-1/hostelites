@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
 import { Footer } from "../Footer";
-import TemporaryDrawer from "./TemporaryDrawer";
+import TemporaryDrawer from "./RoomsDrawer";
 
 import { RoomTemplate } from "./RoomTemplate";
 import useStyles from "./styles";

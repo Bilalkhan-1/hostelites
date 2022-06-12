@@ -65,12 +65,7 @@ const styles = makeStyles(() =>
       margin: "8px 5px",
       borderRadius: 5,
     },
-    imageForComplaint: {
-      height: 50,
-      width: 50,
-      margin: "3px 10px",
-      borderRadius: 2,
-    },
+
     titleGrid: {
       padding: 10,
     },
@@ -124,11 +119,11 @@ const styles = makeStyles(() =>
       color: "#FFFFFF",
       padding: "5px 10px",
     },
-    template: {
-      width: "130vh",
-    },
     roomstemplate: {
       width: "150vh",
+    },
+    template: {
+      width: "130vh",
     },
     container: {
       display: "flex",

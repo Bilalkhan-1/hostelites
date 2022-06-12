@@ -7,20 +7,18 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import ReceiptIcon from "@mui/icons-material/Receipt";
+import BedroomChildIcon from "@mui/icons-material/BedroomChild";
 import FeedbackIcon from "@mui/icons-material/Feedback";
-import SingleBedIcon from "@mui/icons-material/SingleBed";
+import PersonIcon from "@mui/icons-material/Person";
+import MailIcon from "@mui/icons-material/Mail";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { useNavigate } from "react-router-dom";
+import { Grid } from "@material-ui/core";
 import { Navbar } from "react-bootstrap";
 import classNames from "classnames";
 import useStyles from "./styles";
-import { useContext } from "react";
-import { LoggedUser } from "../../App.js";
 
 export default function TemporaryDrawer() {
-  const { loggedUser, setLoggedUser } = useContext(LoggedUser);
-
   const classes = useStyles();
   const navigate = useNavigate();
   const [state, setState] = React.useState({
@@ -41,14 +39,17 @@ export default function TemporaryDrawer() {
     setState({ ...state, [anchor]: open });
   };
 
+  function openRooms() {
+    navigate("/rooms");
+  }
+  function openRequests() {
+    navigate("/requests");
+  }
+  function opensStudents() {
+    navigate("/students");
+  }
   function openComplaints() {
-    navigate("/userComplaints");
-  }
-  function openInvoice() {
-    navigate("/invoice");
-  }
-  function openBookPage() {
-    navigate("/bookPage");
+    navigate("/complaints");
   }
 
   const list = (anchor) => (
@@ -60,41 +61,51 @@ export default function TemporaryDrawer() {
     >
       <List>
         <ListItem disablePadding>
+          <ListItemButton onClick={openRooms}>
+            <ListItemIcon>
+              <BedroomChildIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Rooms"} />
+          </ListItemButton>
+        </ListItem>
+
+        <ListItem disablePadding>
+          <ListItemButton onClick={openRequests}>
+            <ListItemIcon>
+              <MailIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Requests"} />
+          </ListItemButton>
+        </ListItem>
+
+        <ListItem disablePadding>
+          <ListItemButton onClick={opensStudents}>
+            <ListItemIcon>
+              <PersonIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Students"} />
+          </ListItemButton>
+        </ListItem>
+
+        <ListItem disablePadding>
           <ListItemButton onClick={openComplaints}>
             <ListItemIcon>
               <FeedbackIcon />
             </ListItemIcon>
-            <ListItemText primary={"Complaint Form"} />
+            <ListItemText primary={"Complaints"} />
           </ListItemButton>
         </ListItem>
 
-        <ListItem disablePadding>
-          <ListItemButton onClick={openInvoice}>
-            <ListItemIcon>
-              <ReceiptIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Invoice"} />
-          </ListItemButton>
-        </ListItem>
-
-        <ListItem disablePadding>
-          <ListItemButton onClick={openBookPage}>
-            <ListItemIcon>
-              <SingleBedIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Book Room"} />
-          </ListItemButton>
-        </ListItem>
         <ListItem disablePadding>
           <ListItemButton
             onClick={() => {
-              navigate("/activeComplaints");
+              navigate("/addRoom");
             }}
           >
             <ListItemIcon>
               <FeedbackIcon />
             </ListItemIcon>
-            <ListItemText primary={" My Complaints"} />
+            <ListItemText primary={"Add Room"} />
           </ListItemButton>
         </ListItem>
       </List>
@@ -102,7 +113,7 @@ export default function TemporaryDrawer() {
   );
 
   return (
-    <div className={classes.rightSideDrawer}>
+    <div>
       {["left"].map((anchor) => (
         <React.Fragment key={anchor}>
           <Navbar bg="dark" variant="dark">
@@ -111,9 +122,9 @@ export default function TemporaryDrawer() {
             </Button>
             <div className="container-fluid">
               <Navbar.Brand
-                href="/userHome"
+                href="/"
                 onClick={() => {
-                  navigate("/userHome");
+                  navigate("/adminhome");
                 }}
               >
                 <img
@@ -129,15 +140,24 @@ export default function TemporaryDrawer() {
                 />
                 Hostelites
               </Navbar.Brand>
-              <Button
-                className={classes.icon}
-                onClick={() => {
-                  setLoggedUser([]);
-                  navigate("/");
-                }}
-              >
-                LOG OUT
-              </Button>
+              <Grid>
+                <Button
+                  className={classes.icon}
+                  onClick={() => {
+                    navigate("/addRoom");
+                  }}
+                >
+                  Add Room
+                </Button>
+                <Button
+                  className={classes.icon}
+                  onClick={() => {
+                    navigate("/");
+                  }}
+                >
+                  LOG OUT
+                </Button>
+              </Grid>
             </div>
           </Navbar>
           <Drawer

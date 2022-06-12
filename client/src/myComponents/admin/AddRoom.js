@@ -10,6 +10,7 @@ import Checkbox from "@mui/material/Checkbox";
 import { FormGroup } from "react-bootstrap";
 import { FormControlLabel } from "@mui/material";
 import { Footer } from "../Footer";
+import useStyles from "./styles";
 
 import {
   Paper,
@@ -24,6 +25,7 @@ import TemporaryDrawer from "./TemporaryDrawer";
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 function AddRoom() {
+  const classes = useStyles();
   const [wifi, setWifi] = useState(true);
   const [parking, setParking] = useState(true);
   const [availability, setAvailability] = useState(true);
@@ -38,26 +40,19 @@ function AddRoom() {
     width: 600,
     margin: "20px auto",
   };
-  const avatarStyle = {
-    backgroundColor: "black",
-  };
-  const linkstyle = {};
-  const navigate = useNavigate();
 
-  function signinPage() {
-    navigate("/signin");
-  }
+  const navigate = useNavigate();
 
   return (
     <>
       <TemporaryDrawer />
-      <Grid justifyContent="center">
-        <Typography variant="h4" className="text-center my-5">
-          Add new Room
-        </Typography>
-        <Typography variant="h5" className="text-center my-5">
-          Enter the Details of the Room and mark as available for it to show
-        </Typography>
+      <Grid
+        justifyContent="center"
+        container
+        item
+        xs={12}
+        className={classes.container}
+      >
         <Formik
           initialValues={{
             type: "",
