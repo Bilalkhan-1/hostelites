@@ -137,11 +137,14 @@ const styles = makeStyles(() =>
       paddingBottom: 110,
     },
     icon: {
-      color: "#fff",
+      color: "#fff !important",
     },
     logo: {
       marginRight: 16,
       marginLeft: 0,
+    },
+    cardContainer: {
+      margin: "150px 10px",
     },
   })
 );

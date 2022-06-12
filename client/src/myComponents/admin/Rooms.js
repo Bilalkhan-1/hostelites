@@ -36,13 +36,11 @@ export const Rooms = () => {
       });
   }, []);
 
-  const navigate = useNavigate();
   const classes = useStyles();
   return (
     <>
       <TemporaryDrawer />
       <Grid container item xs={12} className={classes.container}>
-        {console.log("asnlasd", roomData)}
         <Grid container xs={12}>
           {roomData.map((room) => (
             <RoomTemplate

@@ -93,11 +93,11 @@ export default function TemporaryDrawer() {
             <Button onClick={toggleDrawer(anchor, true)}>
               <ArrowBackIosNewIcon className={classes.icon} fontSize="medium" />
             </Button>
-            <div>
+            <div className="container-fluid">
               <Navbar.Brand
-                href="/"
+                href="/userHome"
                 onClick={() => {
-                  navigate("/");
+                  navigate("/userHome");
                 }}
               >
                 <img
@@ -113,6 +113,14 @@ export default function TemporaryDrawer() {
                 />
                 Hostelites
               </Navbar.Brand>
+              <Button
+                className={classes.icon}
+                onClick={() => {
+                  navigate("/");
+                }}
+              >
+                LOG OUT
+              </Button>
             </div>
           </Navbar>
           <Drawer

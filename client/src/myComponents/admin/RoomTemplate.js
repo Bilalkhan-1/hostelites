@@ -79,15 +79,17 @@ export const RoomTemplate = ({
                     primary="3 Meals a day"
                   />
                 </ListItem>
-                <ListItem disablePadding>
-                  <ListItemIcon>
-                    <DirectionsCarIcon className={classes.facilities} />
-                  </ListItemIcon>
-                  <ListItemText
-                    className={classes.facilities}
-                    primary="Free Parking"
-                  />
-                </ListItem>
+                {parking && (
+                  <ListItem disablePadding>
+                    <ListItemIcon>
+                      <DirectionsCarIcon className={classes.facilities} />
+                    </ListItemIcon>
+                    <ListItemText
+                      className={classes.facilities}
+                      primary="Free Parking"
+                    />
+                  </ListItem>
+                )}
               </List>
             </Grid>
             <Grid
@@ -101,7 +103,7 @@ export const RoomTemplate = ({
               <button
                 className="btn btn-primary"
                 id={id}
-                onClick={(e) => console.log(!avail)}
+                onClick={(e) => setAvail(!avail)}
               >
                 {avail}
               </button>

@@ -67,7 +67,7 @@ const styles = makeStyles(() =>
       paddingBottom: 110,
     },
     icon: {
-      color: "#fff",
+      color: "#fff !important",
     },
     logo: {
       marginRight: 16,
@@ -75,6 +75,9 @@ const styles = makeStyles(() =>
     },
     rightSideDrawer: {
       backgroundColor: "#dedcd7",
+    },
+    cardContainer: {
+      margin: "150px 10px",
     },
   })
 );
